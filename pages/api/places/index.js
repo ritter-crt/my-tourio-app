@@ -1,8 +1,10 @@
 // import dbConnect from "../../../db/connect";
 import Place from "../../../db/models/Place";
+import dbConnect from "../../../db/connect";
 
 export default async function handler(request, response) {
-  // await dbConnect();
+
+  await dbConnect();
 
   if (request.method === "GET") {
     try {
