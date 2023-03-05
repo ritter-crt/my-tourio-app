@@ -3,7 +3,8 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
-export default function PlaceForm({ onAddCard }) {
+export default function PlaceForm() {
+  
   const router = useRouter();
   const places = useSWR("/api/places");
 

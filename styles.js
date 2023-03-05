@@ -12,7 +12,7 @@ export default createGlobalStyle`
   }
 
   body {
-    display: grid;
+    ${'' /* display: grid; */}
     margin: auto;
     font-family: system-ui;
   }
