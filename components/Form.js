@@ -1,22 +1,22 @@
 import Link from "next/link";
 import styled from "styled-components";
-import useSWR from "swr"
-import Card from "./Card";
+import useSWR from "swr";
+import { useRouter } from "next/router";
 
-export default function PlaceForm({ onAddCard}) {
-  
-  const cards = useSWR("/api/places/create");
+export default function PlaceForm({ onAddCard }) {
+  const router = useRouter();
+  const places = useSWR("/api/places");
 
   async function handleSubmit(event) {
     event.preventDefault();
-
     const formData = new FormData(event.target);
-    const newCard = Object.fromEntries(formData);
-    console.log("newCard_________", newCard);
+
+    const newPlace = Object.fromEntries(formData);
+    console.log("newPlace_____", newPlace);
 
     const response = await fetch("/api/places/create", {
       method: "POST",
-      body: JSON.stringify(newCard),
+      body: JSON.stringify(newPlace),
       headers: {
         "Content-Type": "application/json",
       },
@@ -24,20 +24,17 @@ export default function PlaceForm({ onAddCard}) {
 
     if (response.ok) {
       await response.json();
-      cards.mutate();
+      places.mutate();
 
       event.target.reset();
     } else {
       console.error(`Error: ${response.status}`);
     }
-
-    onAddCard(newCard);
-    event.target.reset();
   }
 
   return (
     <div>
-      <EntryForm>
+      <EntryForm onSubmit={handleSubmit}>
         <InputWrapper>
           <label htmlFor="name">Name</label>
           <input id="name" name="name"></input>
@@ -49,49 +46,12 @@ export default function PlaceForm({ onAddCard}) {
           <input id="map-url" name="map-url"></input>
           <label htmlFor="description">Description</label>
           <input id="description" name="description"></input>
-          {/* <Link href="/"> */}
-            <button onSubmit={handleSubmit}>Save Place</button>
-          {/* </Link> */}
+          <button onClick={() => router.push(`/`)}>Save Place</button>
         </InputWrapper>
       </EntryForm>
     </div>
   );
 }
-
-{
-  /* <form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname">
-</form> */
-}
-
-// export default function Form() {
-//   return (
-//     <EntryForm>
-//       <InputWrapper>
-//         <input
-//           placeholder={`recommended place`}
-//           name="text"
-//           autoComplete="off"
-//           aria-label="Enter text"
-//         />
-//         <input
-//           placeholder={`specify city`}
-//           name="name"
-//           aria-label="Enter description"
-//         />
-//         <input
-//           placeholder={`what I love about the place`}
-//           name="name"
-//           aria-label="Enter description"
-//         />
-//       </InputWrapper>
-//       <Button>✚</Button>
-//     </EntryForm>
-//   );
-// }
 
 const EntryForm = styled.form`
   justify-content: center;
