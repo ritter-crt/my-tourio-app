@@ -1,15 +1,15 @@
 import dbConnect from "../../../db/connect";
-import Attraction from "../../../db/models/Attraction";
+import Place from "../../../db/models/Place";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
     try {
-      const attractions = await Attraction.find();
-      console.log(attractions);
+      const places = await Place.find();
+      console.log(places);
 
-      return response.status(200).json(attractions);
+      return response.status(200).json(places);
     } catch (error) {
       return response.status(404).json("Error");
     }
