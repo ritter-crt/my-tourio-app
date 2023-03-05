@@ -3,14 +3,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-export default function Card({ }) {
 
+
+export default function Card({ }) {
   const [entries, setEntries] = useState(null)
   const [isLoading, setLoading] = useState(false)
-
+  
   useEffect(() => {
     setLoading(true)
-    fetch('/api/attractions')
+    fetch('/api/places')
       .then((res) => res.json())
       .then((entries) => {
         setEntries(entries)
@@ -18,9 +19,11 @@ export default function Card({ }) {
       })
     }, [])
     console.log(entries)
-
+  
   if (isLoading) return <p>Loading...</p>
   if (!entries) return <p>No data</p>
+
+
 
     return (
       <>

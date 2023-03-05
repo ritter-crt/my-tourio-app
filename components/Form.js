@@ -1,10 +1,12 @@
 import Link from "next/link";
 import styled from "styled-components";
 import useSWR from "swr"
+import Card from "./Card";
 
-export default function PlaceForm({onSubmit}) {
+export default function PlaceForm({ onAddCard}) {
   
   const cards = useSWR("/api/attractions/create");
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -28,9 +30,10 @@ export default function PlaceForm({onSubmit}) {
     } else {
       console.error(`Error: ${response.status}`);
     }
+
+    onAddCard(newCard);
     event.target.reset();
   }
-
 
   return (
     <div>
@@ -46,9 +49,9 @@ export default function PlaceForm({onSubmit}) {
           <input id="map-url" name="map-url"></input>
           <label htmlFor="description">Description</label>
           <input id="description" name="description"></input>
-          <Link href="/">
+          {/* <Link href="/"> */}
             <button onSubmit={handleSubmit}>Save Place</button>
-          </Link>
+          {/* </Link> */}
         </InputWrapper>
       </EntryForm>
     </div>
