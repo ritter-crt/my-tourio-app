@@ -15,6 +15,5 @@ export default createGlobalStyle`
     display: grid;
     margin: auto;
     font-family: system-ui;
-    place-items: center;
   }
 `;

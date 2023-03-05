@@ -26,11 +26,11 @@ export default function Card({ }) {
       <>
         <div>Attractions</div>
         {entries.map ((entry) => (
-        <section className="entry__wrapper" key={entry._id}>
-        <h4 className="entry__attraction_title">{entry.name}</h4>
-        <div className="entry__location">{entry.location}</div>
+        <section key={entry._id}>
+        <h4 >{entry.name}</h4>
+        <div >{entry.location}</div>
         <div>{entry.description}</div>
-        <Image className="entry__image"src={entry.image} height={500} width={500} alt={entry.name}/>
+        <Image src={entry.image} height={500} width={500} alt={entry.name}/>
         </section>
         ))}
       </>
