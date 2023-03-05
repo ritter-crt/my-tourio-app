@@ -1,5 +1,5 @@
 import dbConnect from "../../../db/connect";
-import Attraction from "../../../db/models/Place";
+import Place from "../../../db/models/Place";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     try {
       const placeData = request.body;
       console.log("PRODUCTDATA", placeData);
-      const place = new Attraction(placeData);
+      const place = new Place(placeData);
       await place.save();
 
       response.status(201).json({ status: "Place created." });

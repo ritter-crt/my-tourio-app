@@ -8,7 +8,7 @@ export default function FormPage() {
 
   function refreshPage() {
     const fetchData = async () => {
-      const data = await fetch("/api/attractions");
+      const data = await fetch("/api/places");
       const cards = await data.json();
       setCardList(cards);
     };

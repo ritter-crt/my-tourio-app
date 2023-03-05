@@ -5,16 +5,16 @@ import Card from "./Card";
 
 export default function PlaceForm({ onAddCard}) {
   
-  const cards = useSWR("/api/attractions/create");
+  const cards = useSWR("/api/places/create");
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const newCard = Object.fromEntries(formData);
-    console.log(newCard);
+    console.log("newCard_________", newCard);
 
-    const response = await fetch("/api/attractions/create", {
+    const response = await fetch("/api/places/create", {
       method: "POST",
       body: JSON.stringify(newCard),
       headers: {
