@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
@@ -43,8 +43,8 @@ export default function PlaceForm() {
           <input id="image" name="image"></input>
           <label htmlFor="location">Location</label>
           <input id="location" name="location"></input>
-          <label htmlFor="map-url">Map URL</label>
-          <input id="map-url" name="map-url"></input>
+          <label htmlFor="mapURL">Map URL</label>
+          <input id="mapURL" name="mapURL"></input>
           <label htmlFor="description">Description</label>
           <input id="description" name="description"></input>
           <button onClick={() => router.push(`/`)}>Save Place</button>
@@ -68,19 +68,3 @@ const InputWrapper = styled.div`
   margin-left: 10%;
   margin-right: 10%;
 `;
-
-// const Button = styled.button`
-//   background-color: white;
-//   color: #fe4b13;
-//   border: none;
-//   border-radius: 7px;
-
-//   svg {
-//     height: 48px;
-//     width: 48px;
-//   }
-// `;
-
-// const StyledDiv = styled.div `
-// padding: 20%;
-// `
