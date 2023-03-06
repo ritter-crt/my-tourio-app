@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     try {
       const placeData = request.body;
       const place = new Place(placeData);
-    
+      console.log("Hello Server!!!!!!")
       await place.save();
 
       response.status(201).json({ status: "Place created" });
