@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import styled from "styled-components";
 import PlaceForm from "../components/Form";
 
 export default function FormPage() {
-
   return (
     <>
       <Div>Add new places</Div>

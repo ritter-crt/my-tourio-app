@@ -1,36 +1,37 @@
 // import { useRouter } from "next/router";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import styled from "styled-components";
-import useSWR from "swr";
 
-export default function Card({}) {
-  const [entries, setEntries] = useState(null);
-  const [isLoading, setLoading] = useState(false);
+// import useSWR from "swr";
 
-  useEffect(() => {
-    setLoading(true);
-    fetch("/api/places")
-      .then((res) => res.json())
-      .then((entries) => {
-        setEntries(entries);
-        setLoading(false);
-      });
-  }, []);
-  console.log(entries);
+export default function Card({ places }) {
+  // const [entries, setEntries] = useState(null);
+  // const [isLoading, setLoading] = useState(false);
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!entries) return <p>No data</p>;
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch("/api/places")
+  //     .then((res) => res.json())
+  //     .then((entries) => {
+  //       setEntries(entries);
+  //       setLoading(false);
+  //     });
+  // }, []);
+  // console.log(entries);
+
+  // if (isLoading) return <p>Loading...</p>;
+  // if (!entries) return <p>No data</p>;
 
   return (
     <>
       <div>Places to visit</div>
       <CardWrapper>
-        {entries.map((entry) => (
+        {places.map((entry) => (
           <div key={entry._id}>
             <h4>{entry.name}</h4>
-            {/* <div>{entry.location}</div> */}
-            {/* <div>{entry.description}</div> */}
+            <div>{entry.location}</div>
+            <div>{entry.description}</div>
             <Image
               src={entry.image}
               height={500}
@@ -39,14 +40,15 @@ export default function Card({}) {
             />
           </div>
         ))}
-        </CardWrapper>
+      </CardWrapper>
     </>
   );
 }
 
 const CardWrapper = styled.div`
-display: flex;
-flex-flow: row wrap;
-gap: 10rem;
-`
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10rem;
+`;
+
 
