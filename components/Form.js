@@ -1,10 +1,8 @@
-// import Link from "next/link";
 import styled from "styled-components";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
-export default function PlaceForm() {
-  
+export default function Form() {  
   const router = useRouter();
   const places = useSWR("/api/places");
 
@@ -32,7 +30,6 @@ export default function PlaceForm() {
       console.error(`Error: ${response.status}`);
     }
   }
-
   return (
     <div>
       <EntryForm onSubmit={handleSubmit}>
@@ -68,3 +65,4 @@ const InputWrapper = styled.div`
   margin-left: 10%;
   margin-right: 10%;
 `;
+
