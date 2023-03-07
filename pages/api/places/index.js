@@ -1,4 +1,3 @@
-// // import dbConnect from "../../../db/connect";
 // import Place from "../../../db/models/Place";
 // import dbConnect from "../../../db/connect";
 

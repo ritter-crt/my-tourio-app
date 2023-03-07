@@ -33,12 +33,12 @@ export default function HomePage({places}) {
 // use fetch is not needed in this case
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   await dbConnect();
 
   try {
     const places = await Place.find();
-    console.log(places);
+    // console.log(places);
     return {
       props: {
         places:JSON.parse(JSON.stringify(places))
